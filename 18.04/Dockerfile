@@ -23,7 +23,12 @@ RUN git clone https://github.com/pwndbg/pwndbg
 WORKDIR /root/pwndbg
 RUN git checkout 2023.03.19
 RUN ./setup.sh
+
+# install one_gadget
 WORKDIR /root
+RUN apt install ruby ruby-dev -y
+RUN gem install elftools -v 1.1.3
+RUN gem install one_gadget -v 1.9.0
 
 # zsh setting
 RUN chsh -s $(which zsh) 
